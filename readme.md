@@ -1,7 +1,7 @@
 INTRODUCTION
 ------------
 
-Program ini dibuat untuk dibaca
+Prorgam ini merupakan contoh sederhana penggunaan CRUD menggunakan laravel, baik dengan menggunakan database maupun file.
 
 REQUIREMENT
 ------------
@@ -12,16 +12,28 @@ modul yang dibutuhkan yaitu:
  * Mysql DB
  * Git
 
- 
- INSTALLATION
+
+Setup
 ------------
-### Development menggunakan php artisan dan composer 
-Use terminal and follow this instruction:
- * Get file from git
-`git clone (git path)`
+
+Gunakan Command untuk melakukan langkah sebagai berikut:
+ * Ambil file project dari github dengan perintah :
+`git clone https://github.com/luluqye/crud.git`
  * Install Composer (https://getcomposer.org) 
 `composer install`
- * Run Apps from php
- `php -S localhost:(port) -t public` 
- * Run Using PHP artisan
+ 
+Konfigurasi
+------------
+Adapun langkah konfigurasinya adalah sebagai berikut :
+#### Konfigurasi Database
+* Install mysql atau database yang lainnya dan buat database dengan nama **crud**.
+* Jalankan perintah  `php artisan migrate` untuk generate tabel.
+* Jalankan perintah `php artisan db:seed`.
+#### Konfigurasi File
+* Jalankan perintah `php artisan storage:link` untuk mempublikasi folder penyimpanan/storage ke public.
+* Edit file **.env** dan sesuaikan dengan konfigurasi baik database maupun konfigurasi yang lainnya.
+
+Running Applikasi
+------------
+ * Gunakan perintah sebagai berikut :
  `php artisan serve --port=(port)`
