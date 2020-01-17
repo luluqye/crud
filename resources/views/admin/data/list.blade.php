@@ -34,7 +34,7 @@
                             <th>Date Of Birth</th>
                             <th>No Telepon</th>
                             <th>Gender</th>
-                            {{--<th>Foto</th>--}}
+                            <th>Foto</th>
                             <th>Option</th>
                         </tr>
                         </thead>
@@ -47,7 +47,7 @@
                                 <td>{{$items['date_of_birth']}}</td>
                                 <td>{{$items['no_telp']}}</td>
                                 <td>{{$items['gender']}}</td>
-                                {{--<td>{{$items['foto']}}</td>--}}
+                                <td>{{$items['foto']}}</td>
                                 <td>
                                     <a href="{{ route('admin.data.edit',$items['id']) }}" class="btn btn-default"><icon class="icon-plus"> Edit</icon></a>
                                     <a href="{{ route('admin.data.delete',$items['id']) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');"><icon class="icon-plus"> Delete</icon></a>
