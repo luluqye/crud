@@ -65,6 +65,11 @@ class DataController extends Controller
         $data=Storage::get($path);
         if(!empty($data)){
             $data = explode(',',$data);
+            if(!empty($data[5])){
+               $foto = Storage::url('foto/'.$data[5]);
+            }else{
+                $foto = "";
+            }
             $result = array(
                 'id'  => base64_encode($path),
                 'name'  => $data[0],
@@ -72,7 +77,7 @@ class DataController extends Controller
                 'date_of_birth'  => $data[2],
                 'no_telp'  => $data[3],
                 'gender'  => $data[4],
-                'foto'  => Storage::url('foto/'.$data[5]),
+                'foto'  => $foto,
             );
         }
         return $result;
