@@ -78,6 +78,7 @@ class DataController extends Controller
                 'no_telp'  => $data[3],
                 'gender'  => $data[4],
                 'foto'  => $foto,
+                'file_foto'  => $data[5],
             );
         }
         return $result;
@@ -86,7 +87,7 @@ class DataController extends Controller
     public function deleteFile($id){
         $data=$this->findById($id);
         try{
-            Storage::delete($this->path_foto.'/'.$data['foto']);
+            Storage::delete($this->path_foto.'/'.$data['file_foto']);
             Storage::delete(base64_decode($id));
         }catch (\Exception $e){
             return false;
@@ -181,6 +182,7 @@ class DataController extends Controller
         }
         try{
             //initial data
+            $data = $this->findById($id);
             $file_name= $input['name'].'-'.date('dmYHis');
             if ($request->hasFile('foto')) {
                 $photo = $file_name.'.'.$request->file('foto')->extension();
@@ -189,11 +191,13 @@ class DataController extends Controller
                 $request->file('foto')->storeAs(
                     $this->path_foto, $photo
                 );
+                //delete old file
+                $this->deleteFile($id);
             }else{
-                $photo = "";
+                $photo = $data['file_foto'];
             }
 
-            $data = array(
+            $update = array(
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'date_of_birth' => $input['date'],
@@ -203,9 +207,8 @@ class DataController extends Controller
             );
 
             //save data to file .txt
-            $this->deleteFile($id);
             $path = base64_decode($id);
-            $result = Storage::disk('local')->put($path, implode(',',$data));
+            $result = Storage::disk('local')->put($path, implode(',',$update));
 
         }catch (\Exception $e){
             return redirect()
