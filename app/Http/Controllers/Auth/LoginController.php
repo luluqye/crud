@@ -56,7 +56,7 @@ class LoginController extends Controller
             $remember = false;
         }
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password ,'is_deleted' => 0],$remember)) {
+        if (Auth::attempt(['email' => $request->email ,'is_deleted' => 0],$remember)) {
             return redirect()->route($this->redirectToRoute);
         }else{
             $request->session()->flash('status', 'Error Authentication!');
