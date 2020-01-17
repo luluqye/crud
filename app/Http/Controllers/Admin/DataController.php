@@ -149,7 +149,7 @@ class DataController extends Controller
                 ->withErrors($e->getMessage())
                 ->withInput();
         }
-        return redirect()->route('admin.data.list')->with('message','Add data successful');
+        return redirect()->route('admin.data.list')->with('message','Terima kasih telas mengisi form');
 
     }
 
