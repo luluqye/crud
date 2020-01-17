@@ -55,7 +55,7 @@ class AccountController extends Controller
             $data = array(
               'name' => $input['name'],
               'email' => $input['email'],
-              'password' => Hash::make($input['name']),
+              'password' => Hash::make($input['password']),
               'is_deleted' => 0,
             );
 
