@@ -73,15 +73,20 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="no_telp">Foto:</label>
+                        <div class="col-sm-10 pb-2">
+                            @if(!empty(@$data['foto']))
+                                <img class="photo" width="250" height="250" id="img-foto"src="{{@$data['foto']}}">
+                            @else
+                                <img class="photo" width="250" height="250" id="img-foto"src="https://via.placeholder.com/250">
+                            @endif
+                        </div>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control" name="foto" value="{{ old('foto') }}" id="foto">
+                            <input type="file" accept="image/x-png,image/jpeg" class="form-control" name="foto" value="{{ old('foto') }}" id="foto" onchange="document.getElementById('img-foto').src = window.URL.createObjectURL(this.files[0])">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-success">{{$status}}</button>
-                        </div>
-                        <div class="col-sm-offset-2 col-sm-10">
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
                     </div>
