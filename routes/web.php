@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web','auth']], function () {
         Route::get('/delete/{id}', 'Admin\DataController@delete')->name('admin.data.delete');
     });
 });
-//Route::get('/list', 'Admin\AccountController@index')->name('admin.account.list');
+Route::get('/list', 'Admin\AccountController@index')->name('admin.account.list');
 
 
 
