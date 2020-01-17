@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('is_deleted')->default(0);
             $table->rememberToken();
             $table->timestamps();
+            $table->charset = 'utf8';
         });
     }
 
