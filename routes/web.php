@@ -23,15 +23,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::group(['middleware' => ['web','auth']], function () {
     //Dashboard
     Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
-    //Account
-    Route::prefix('account')->group(function () {
-        Route::get('/list', 'Admin\AccountController@index')->name('admin.account.list');
-        Route::get('/add', 'Admin\AccountController@add')->name('admin.account.add');
-        Route::post('/insert', 'Admin\AccountController@insert')->name('admin.account.insert');
-        Route::get('/edit/{id}', 'Admin\AccountController@edit')->name('admin.account.edit');
-        Route::post('/update/{id}', 'Admin\AccountController@update')->name('admin.account.update');
-        Route::get('/delete/{id}', 'Admin\AccountController@delete')->name('admin.account.delete');
-    });
+
     //Data
     Route::prefix('data')->group(function () {
         Route::get('/list', 'Admin\DataController@index')->name('admin.data.list');
@@ -41,4 +33,14 @@ Route::group(['middleware' => ['web','auth']], function () {
         Route::post('/update/{id}', 'Admin\DataController@update')->name('admin.data.update');
         Route::get('/delete/{id}', 'Admin\DataController@delete')->name('admin.data.delete');
     });
+});
+
+//Account
+Route::prefix('account')->group(function () {
+    Route::get('/list', 'Admin\AccountController@index')->name('admin.account.list');
+    Route::get('/add', 'Admin\AccountController@add')->name('admin.account.add');
+    Route::post('/insert', 'Admin\AccountController@insert')->name('admin.account.insert');
+    Route::get('/edit/{id}', 'Admin\AccountController@edit')->name('admin.account.edit');
+    Route::post('/update/{id}', 'Admin\AccountController@update')->name('admin.account.update');
+    Route::get('/delete/{id}', 'Admin\AccountController@delete')->name('admin.account.delete');
 });
