@@ -41,7 +41,7 @@ class DataController extends Controller
         $result= [];
         $file = Storage::files($this->path_file);
         foreach ($file as $path){
-            $data=Storage::get($path);
+            $data=(string) Storage::get($path);
             if(!empty($data)){
                 $data = explode(',',$data);
                 $result[] = array(
@@ -62,7 +62,7 @@ class DataController extends Controller
         //get data from file
         $result= [];
         $path = base64_decode($id);
-        $data=Storage::get($path);
+        $data=(string) Storage::get($path);
         if(!empty($data)){
             $data = explode(',',$data);
             if(!empty($data[5])){
@@ -208,7 +208,7 @@ class DataController extends Controller
 
             //save data to file .txt
             $path = base64_decode($id);
-            $result = Storage::disk('local')->put($path, implode(',',$update));
+            Storage::disk('local')->put($path, implode(',',$update));
 
         }catch (\Exception $e){
             return redirect()
