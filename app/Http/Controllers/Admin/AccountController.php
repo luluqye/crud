@@ -28,7 +28,6 @@ class AccountController extends Controller
     {
         //list user
         $data=User::stream()->paginate(100);
-        print_r($data);die;
         return view('admin/account/list', ['data'=>$data,'nav'=>$this->page]);
     }
 
